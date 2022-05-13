@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+}
+
+.button-div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+table, th, tr {
+    border-collapse: collapse;
+    border: 1px solid;
+}
