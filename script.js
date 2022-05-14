@@ -30,7 +30,7 @@ function onSubmit() {
                 <td>${$('#last-name').val()}</td>
                 <td class="employee-id">${$('#employee-id').val()}</td>
                 <td>${$('#employee-title').val()}</td>
-                <td>${$('#annual-salary').val()}</td>
+                <td>$${Number($('#annual-salary').val()).toLocaleString('en')}</td>
                 <td>
                     <button class="delete-btn">
                         Delete
@@ -61,8 +61,9 @@ function calculateMonthlyCost() {
     for (let empl of employees) {
         annualCost += Number(empl.annualSalary);
     }
+    monthlyCost = annualCost / 12;
     $('.totalCostBox').empty();
-    $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(annualCost).toLocaleString('en')}</h4>`);
+    $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(monthlyCost).toLocaleString('en')}</h4>`);
     return annualCost;
 }// end calculateMonthlyCost
 
