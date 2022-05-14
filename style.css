@@ -1,5 +1,14 @@
 h1 {
     text-align: center;
+    background-color: grey;
+}
+h4 {
+    text-align: left;
+    margin-right: 10px;
+}
+
+input {
+    width: 135px;
 }
 
 .button-div {
@@ -45,3 +54,12 @@ tr:nth-child(even) {
     }
 }
 
+.totalCostBox {
+    float: right;
+    border: 1px solid;
+    border-color: black;
+    width: 250px;
+    height: 40px;
+    margin-right: 5px;
+    padding: 10px;
+}

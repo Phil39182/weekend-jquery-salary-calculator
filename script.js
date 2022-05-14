@@ -29,6 +29,7 @@ function onSubmit() {
                 <td>${$('#first-name').val()}</td>
                 <td>${$('#last-name').val()}</td>
                 <td class="employee-id">${$('#employee-id').val()}</td>
+                <td>${$('#employee-title').val()}</td>
                 <td>${$('#annual-salary').val()}</td>
                 <td>
                     <button class="delete-btn">
@@ -42,11 +43,12 @@ function onSubmit() {
             firstName: $('#first-name').val(),
             lastName: $('#last-name').val(),
             emplID: $('#employee-id').val(),
+            emplTitle: $('#employee-title').val(),
             annualSalary: $('#annual-salary').val()
     }
     employees.push(employee);
 
-    $('#first-name').val(''), $('#last-name').val(''), $('#employee-id').val(''), $('#annual-salary').val('');
+    $('#first-name').val(''), $('#last-name').val(''), $('#employee-id').val(''),$('#employee-title').val(''), $('#annual-salary').val('');
     $('#first-name').select(); //selects first name field for next entry
     }
    calculateMonthlyCost();
@@ -59,6 +61,8 @@ function calculateMonthlyCost() {
     for (let empl of employees) {
         annualCost += Number(empl.annualSalary);
     }
+    $('.totalCostBox').empty();
+    $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(annualCost).toLocaleString('en')}</h4>`);
     return annualCost;
 }// end calculateMonthlyCost
 
