@@ -63,7 +63,7 @@ function calculateMonthlyCost() {
     }
     monthlyCost = annualCost / 12;
     $('.totalCostBox').empty();
-    $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(monthlyCost).toLocaleString('en')}</h4>`);
+    $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(monthlyCost).toLocaleString('en', { minimumFractionDigits: 2 })}</h4>`);
     return annualCost;
 }// end calculateMonthlyCost
 
