@@ -6,49 +6,76 @@ function onReady() {
 $(document).on('click', '#submit-employee-btn', onSubmit);
 $(document).on('click', '.delete-btn', onDelete);
 
-}
+}//end onReady
 
-let Employees = [];
-
+let employees = [];
+let rowNumber =0;
 function onSubmit() {
-    
-    console.log('in onSubmit')
-    $('#employee-table').append(`
-        <tr>
-            <td>${$('#first-name').val()}</td>
-            <td>${$('#last-name').val()}</td>
-            <td>${$('#employee-id').val()}</td>
-            <td>${$('#annual-salary').val()}</td>
-            <td>
-                <button class="delete-btn">
-                    Delete
-                </button>
-            </td>
-        </tr>  
-    `);
-
-    let employee = {
-        firstName: $('#first-name').val(),
-        lastName: $('#last-name').val(),
-        emplID: $('#employee-id').val(),
-        annualSalary: $('#annual-salary').val()
+    // VV checks for empty fields and alerts if any are missing
+    if ($('#first-name').val(), $('#last-name').val(), $('#employee-id').val(), $('#annual-salary').val() === '' ) {
+        alert('Please fill out all required fields')
     }
-    Employees.push(employee);
+    else {
+        for ( let empl of employees ) {
+            if ( empl.emplID === $('#employee-id').val()) {
+                alert('That Employee ID is already in use');
+                return;
+            }
+        }
+    
+        console.log('in onSubmit')
+        $('#employee-table').append(`
+            <tr class="row${rowNumber}">
+                <td>${$('#first-name').val()}</td>
+                <td>${$('#last-name').val()}</td>
+                <td class="employee-id">${$('#employee-id').val()}</td>
+                <td>${$('#annual-salary').val()}</td>
+                <td>
+                    <button class="delete-btn">
+                        Delete
+                    </button>
+                </td>
+            </tr>  
+        `);
+        rowNumber ++;
+            let employee = {
+            firstName: $('#first-name').val(),
+            lastName: $('#last-name').val(),
+            emplID: $('#employee-id').val(),
+            annualSalary: $('#annual-salary').val()
+    }
+    employees.push(employee);
 
     $('#first-name').val(''), $('#last-name').val(''), $('#employee-id').val(''), $('#annual-salary').val('');
+    $('#first-name').select(); //selects first name field for next entry
+    }
+   calculateMonthlyCost();
 }// end onSubmit
 
+let annualCost =0;
 
 function calculateMonthlyCost() {
-    let annualCost =0;
+    annualCost = 0;
     for (let empl of employees) {
-        annualCost += empl.annualSalary;
+        annualCost += Number(empl.annualSalary);
     }
-}
+    return annualCost;
+}// end calculateMonthlyCost
 
-
+let itemToBeRemoved;
 function onDelete() {
     console.log('in onDelete')
+    itemToBeRemoved = $(this).val;
     $(this).parent().parent().empty();
-
+    
+    // for (let empl of employees) {
+    //      if ( empl.)
+    // }
+    return itemToBeRemoved;
+    calculateMonthlyCost();
 }// end onDelete
+
+
+// function updateRowColors() {
+//     $('tr:even ')
+// }
