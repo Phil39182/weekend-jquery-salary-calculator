@@ -28,7 +28,7 @@ function onSubmit() {
             <tr class="row${rowNumber}">
                 <td>${$('#first-name').val()}</td>
                 <td>${$('#last-name').val()}</td>
-                <td class="employee-id">${$('#employee-id').val()}</td>
+                <td id="employee-id">${$('#employee-id').val()}</td>
                 <td>${$('#employee-title').val()}</td>
                 <td>$${Number($('#annual-salary').val()).toLocaleString('en')}</td>
                 <td>
@@ -70,12 +70,13 @@ function calculateMonthlyCost() {
 let itemToBeRemoved;
 function onDelete() {
     console.log('in onDelete')
-    itemToBeRemoved = $(this).val;
+    itemToBeRemoved = $(this).parent().parent().children("#employee-id").text();
     $(this).parent().parent().empty();
     
     // for (let empl of employees) {
     //      if ( empl.)
     // }
+    calculateMonthlyCost();
     return itemToBeRemoved;
     calculateMonthlyCost();
 }// end onDelete
