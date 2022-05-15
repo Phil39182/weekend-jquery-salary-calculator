@@ -73,9 +73,11 @@ function onDelete() {
     itemToBeRemoved = $(this).parent().parent().children("#employee-id").text();
     $(this).parent().parent().empty();
     
-    // for (let empl of employees) {
-    //      if ( empl.)
-    // }
+     for (let empl of employees) {
+          if ( empl.emplID = itemToBeRemoved ) {
+              employees.splice ( empl - 1, 1);
+          }
+    }
     calculateMonthlyCost();
     return itemToBeRemoved;
     calculateMonthlyCost();
@@ -84,4 +86,4 @@ function onDelete() {
 
 // function updateRowColors() {
 //     $('tr:even ')
-// }
+// }hiy
