@@ -75,7 +75,7 @@ function onDelete() {
     
      for (let empl of employees) {
           if ( empl.emplID = itemToBeRemoved ) {
-              employees.splice ( empl - 1, 1);
+              employees.splice( empl, 1);
           }
     }
     calculateMonthlyCost();
