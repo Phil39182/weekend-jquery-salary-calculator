@@ -38,7 +38,9 @@ function onSubmit() {
                 </td>
             </tr>  
         `);
+        //increments rowNumber counter assigned to each row
         rowNumber ++;
+        //creates employee object with values corresponding to input fields
             let employee = {
             firstName: $('#first-name').val(),
             lastName: $('#last-name').val(),
@@ -46,8 +48,9 @@ function onSubmit() {
             emplTitle: $('#employee-title').val(),
             annualSalary: $('#annual-salary').val()
     }
+    //pushes employee object to the employees array
     employees.push(employee);
-
+    // VV clears input fields from DOM
     $('#first-name').val(''), $('#last-name').val(''), $('#employee-id').val(''),$('#employee-title').val(''), $('#annual-salary').val('');
     $('#first-name').select(); //selects first name field for next entry
     }
@@ -59,10 +62,14 @@ let annualCost =0;
 function calculateMonthlyCost() {
     annualCost = 0;
     for (let empl of employees) {
+        //runs through each employee and adds salary to annualCost
         annualCost += Number(empl.annualSalary);
     }
+    //divides annualCost by 12 to get monthlyCost
     monthlyCost = annualCost / 12;
+    //empties totalCostBox div to allow appending new monthly cost on DOM
     $('.totalCostBox').empty();
+    //append new monthlyCost onto DOM
     $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(monthlyCost).toLocaleString('en', { minimumFractionDigits: 2 })}</h4>`);
     return annualCost;
 }// end calculateMonthlyCost
@@ -75,7 +82,7 @@ function onDelete() {
     
      for (let empl of employees) {
           if ( empl.emplID = itemToBeRemoved ) {
-              employees.splice( empl, 1);
+            employees.splice( empl, 1);
           }
     }
     calculateMonthlyCost();
@@ -86,4 +93,4 @@ function onDelete() {
 
 // function updateRowColors() {
 //     $('tr:even ')
-// }hiy
+// }

@@ -56,6 +56,15 @@ tr:nth-child(even) {
     }
 }
 
+#tableFooter {
+    background-color: lightgrey;
+    height: 30px;
+    border-collapse: collapse;
+    border: 1px solid;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+
 .totalCostBox {
     float: right;
     border: 1px solid;
