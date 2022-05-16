@@ -71,6 +71,11 @@ function calculateMonthlyCost() {
     $('.totalCostBox').empty();
     //append new monthlyCost onto DOM
     $('.totalCostBox').append(`<h4>Total Monthly Cost: $${Number(monthlyCost).toLocaleString('en', { minimumFractionDigits: 2 })}</h4>`);
+    if(monthlyCost > 20000) {
+        $('.totalCostBox').addClass('red');
+    }
+    
+    
     return annualCost;
 }// end calculateMonthlyCost
 
@@ -94,3 +99,4 @@ function onDelete() {
 // function updateRowColors() {
 //     $('tr:even ')
 // }
+
